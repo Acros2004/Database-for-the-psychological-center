@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0e39abb2f3244699b8610fa838bd0867" Name="Diagram1">
+        <EntityTypeShape EntityType="Psychological_CenterModel.Academic_Degree" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Psychological_CenterModel.Booking" Width="1.5" PointX="7.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Psychological_CenterModel.Client" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Psychological_CenterModel.Procedure" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Psychological_CenterModel.Psychologist" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Psychological_CenterModel.Review" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Psychological_CenterModel.Specialization" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Psychological_CenterModel.Timetable" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Psychological_CenterModel.Voucher" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="Psychological_CenterModel.FK__Psycholog__Degre__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="Psychological_CenterModel.FK__Booking__Id_Clie__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="Psychological_CenterModel.FK__Booking__Id_Proc__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="Psychological_CenterModel.FK__Booking__Id_Psyc__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="Psychological_CenterModel.FK__Booking__Id_Vouc__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="Psychological_CenterModel.FK__Review__Id_Clien__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="Psychological_CenterModel.FK__Psycholog__Spezi__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="Psychological_CenterModel.FK__Timetable__Id_Ps__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="Psychological_CenterModel.FK__Voucher__Id_Psyc__412EB0B6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,91 @@
+﻿<Page x:Class="CleanBrain.Users.Profile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:local="clr-namespace:CleanBrain.Users"
+      
+      xmlns:vm="clr-namespace:CleanBrain.MVVM"
+      
+      mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=vm:ProfileModel}"
+
+      d:DesignHeight="480" d:DesignWidth="450"
+      Title="Profile">
+    <Border Background="#d1cbed" CornerRadius="15">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="75"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="125"/>
+            </Grid.RowDefinitions>
+
+            <Border CornerRadius="15 15 0 0" Grid.ColumnSpan="3" Margin="0,0,0,73" Grid.RowSpan="2">
+                <Border.Background>
+                    <ImageBrush ImageSource="../Photos/backProfile.jpg" />
+                </Border.Background>
+            </Border>
+            <Button Grid.Column="1"  Grid.Row="0" VerticalAlignment="Bottom" Margin="2" Height="110"  Width="110"  Style="{StaticResource ImageButton}" Command="{Binding ChangeImage}">
+                <Button.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image,UpdateSourceTrigger=PropertyChanged}" />
+                </Button.Background>
+            </Button>
+            <Border Background="BlueViolet" Grid.Row="1" Height="3" Grid.ColumnSpan="3" Margin="0,2,-1,70"/>
+            <TextBlock Style="{StaticResource profileText}" TextAlignment="Center" Grid.Column="0" Grid.Row="1" Height="25" VerticalAlignment="Top" Text="{DynamicResource ProfileName}" Margin="7,36,274,0" Grid.ColumnSpan="2"/>
+            <TextBox Style="{StaticResource Prof_TextBox}" Foreground="{Binding CorrectName}" Text="{Binding NameProf,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Margin="41,32,45,8" Grid.ColumnSpan="2">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="GotFocus">
+                        <i:InvokeCommandAction Command="{Binding NameGot}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding NameLost}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding ChangeName}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <Border Height="1" Grid.Row="2" Margin="0,4,0,69" Background="#565656" Grid.ColumnSpan="3"/>
+            <TextBlock Style="{StaticResource profileText}" TextAlignment="Center" Grid.Column="0" Grid.Row="2" Height="36" VerticalAlignment="Top" Text="{DynamicResource ProfileSurname}" Margin="5,35,278,0" Grid.ColumnSpan="2"/>
+            <TextBox Style="{StaticResource Prof_TextBox}" Foreground="{Binding CorrectSurname}" Text="{Binding SurnameProf,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Margin="41,31,45,9" Height="35" Grid.ColumnSpan="2" Width="289">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="GotFocus">
+                        <i:InvokeCommandAction Command="{Binding SurnameGot}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding SurnameLost}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding ChangeSurname}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+
+            <Border Height="1" Grid.Row="3" Margin="1,2,-1,71" Background="#565656" Grid.ColumnSpan="3"/>
+            <TextBlock Style="{StaticResource profileText}" TextAlignment="Center" Grid.Column="0" Grid.Row="3" Height="36" VerticalAlignment="Top" Text="{DynamicResource ProfileMail}" Margin="5,34,4,0"/>
+            <TextBox Style="{StaticResource Prof_TextBox}" Foreground="{Binding CorrectEmail}" Text="{Binding MailProf,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Margin="41,31,45,9" Grid.ColumnSpan="2" Height="35" Width="289">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="GotFocus">
+                        <i:InvokeCommandAction Command="{Binding EmailGot}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding EmailLost}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding ChangeMail}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <Border Height="1" Grid.Row="4" Margin="1,4,-1,120" Background="#565656" Grid.ColumnSpan="3"/>
+            <Button  Style="{StaticResource Button_Prof}" Command="{Binding SaveProf}" Content="{DynamicResource ProfileSave}" Margin="47,20,47,25" Grid.Row="4" Height="80" Grid.Column="1" />
+        </Grid>
+    </Border>
+
+</Page>

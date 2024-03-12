@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Psychological_CenterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Academic_Degree">
+    <Key>
+      <PropertyRef Name="Academic_Name" />
+    </Key>
+    <Property Name="Academic_Name" Type="nvarchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="ID_Booking" />
+    </Key>
+    <Property Name="ID_Booking" Type="smallint" Nullable="false" />
+    <Property Name="Date_Booking" Type="date" Nullable="false" />
+    <Property Name="Id_Procedure" Type="int" Nullable="false" />
+    <Property Name="Id_Client" Type="int" Nullable="false" />
+    <Property Name="Id_Psychologist" Type="int" Nullable="false" />
+    <Property Name="Id_Voucher" Type="int" Nullable="false" />
+    <Property Name="Time_Booking" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id_client" />
+    </Key>
+    <Property Name="Id_client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Client" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Surname_Client" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Login_Client" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password_Client" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Photo_Client" Type="varbinary(max)" />
+    <Property Name="Mail_Client" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Procedures">
+    <Key>
+      <PropertyRef Name="Id_Procedure" />
+    </Key>
+    <Property Name="Id_Procedure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Procedure" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Depiction" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Spezialization_Procedure" Type="nvarchar" MaxLength="60" />
+    <Property Name="Photo_Procedure" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Psychologist">
+    <Key>
+      <PropertyRef Name="Id_Psychologist" />
+    </Key>
+    <Property Name="Id_Psychologist" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Psychologist" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Surname_Psychologist" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Patronymic_Psychologist" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Experience" Type="smallint" Nullable="false" />
+    <Property Name="Photo_Psychologist" Type="varbinary(max)" />
+    <Property Name="Spezialization_Psychologist" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="Degree" Type="nvarchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="Id_Review" />
+    </Key>
+    <Property Name="Id_Review" Type="int" Nullable="false" />
+    <Property Name="Id_Client" Type="int" Nullable="false" />
+    <Property Name="Review" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Specialization">
+    <Key>
+      <PropertyRef Name="Spezialization_Name" />
+    </Key>
+    <Property Name="Spezialization_Name" Type="nvarchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Psychological_Center.dbo.Timetable" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Timetable">
+    <Key>
+      <PropertyRef Name="Id_Psychologist" />
+    </Key>
+    <Property Name="Id_Psychologist" Type="int" Nullable="false" />
+    <Property Name="MondStart" Type="time" Precision="7" />
+    <Property Name="MondEnd" Type="time" Precision="7" />
+    <Property Name="TueStart" Type="time" Precision="7" />
+    <Property Name="TueEnd" Type="time" Precision="7" />
+    <Property Name="WenStart" Type="time" Precision="7" />
+    <Property Name="WenEnd" Type="time" Precision="7" />
+    <Property Name="ThuStart" Type="time" Precision="7" />
+    <Property Name="ThuEnd" Type="time" Precision="7" />
+    <Property Name="FriStart" Type="time" Precision="7" />
+    <Property Name="FriEnd" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Voucher">
+    <Key>
+      <PropertyRef Name="Id_Voucher" />
+    </Key>
+    <Property Name="Id_Voucher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date_Voucher" Type="date" Nullable="false" />
+    <Property Name="Time_Voucher_Start" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Time_Voucher_End" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Id_Psychologist" Type="int" Nullable="false" />
+    <Property Name="Ordered" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Booking__Id_Clie__48CFD27E">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id_client" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Id_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__Id_Proc__47DBAE45">
+    <End Role="Procedures" Type="Self.Procedures" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Procedures">
+        <PropertyRef Name="Id_Procedure" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Id_Procedure" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__Id_Psyc__49C3F6B7">
+    <End Role="Psychologist" Type="Self.Psychologist" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Psychologist">
+        <PropertyRef Name="Id_Psychologist" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Id_Psychologist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__Id_Vouc__4AB81AF0">
+    <End Role="Voucher" Type="Self.Voucher" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Voucher">
+        <PropertyRef Name="Id_Voucher" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Id_Voucher" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Psycholog__Degre__3E52440B">
+    <End Role="Academic_Degree" Type="Self.Academic_Degree" Multiplicity="1" />
+    <End Role="Psychologist" Type="Self.Psychologist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Academic_Degree">
+        <PropertyRef Name="Academic_Name" />
+      </Principal>
+      <Dependent Role="Psychologist">
+        <PropertyRef Name="Degree" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Psycholog__Spezi__3D5E1FD2">
+    <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
+    <End Role="Psychologist" Type="Self.Psychologist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specialization">
+        <PropertyRef Name="Spezialization_Name" />
+      </Principal>
+      <Dependent Role="Psychologist">
+        <PropertyRef Name="Spezialization_Psychologist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Review__Id_Clien__4D94879B">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id_client" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="Id_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Timetable__Id_Ps__44FF419A">
+    <End Role="Psychologist" Type="Self.Psychologist" Multiplicity="1" />
+    <End Role="Timetable" Type="Self.Timetable" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Psychologist">
+        <PropertyRef Name="Id_Psychologist" />
+      </Principal>
+      <Dependent Role="Timetable">
+        <PropertyRef Name="Id_Psychologist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Voucher__Id_Psyc__412EB0B6">
+    <End Role="Psychologist" Type="Self.Psychologist" Multiplicity="1" />
+    <End Role="Voucher" Type="Self.Voucher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Psychologist">
+        <PropertyRef Name="Id_Psychologist" />
+      </Principal>
+      <Dependent Role="Voucher">
+        <PropertyRef Name="Id_Psychologist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище Psychological_CenterModelContainer">
+    <EntitySet Name="Academic_Degree" EntityType="Self.Academic_Degree" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Procedures" EntityType="Self.Procedures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Psychologist" EntityType="Self.Psychologist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Specialization" EntityType="Self.Specialization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Timetable" EntityType="Self.Timetable" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Timetable].[Id_Psychologist] AS [Id_Psychologist], 
+    [Timetable].[MondStart] AS [MondStart], 
+    [Timetable].[MondEnd] AS [MondEnd], 
+    [Timetable].[TueStart] AS [TueStart], 
+    [Timetable].[TueEnd] AS [TueEnd], 
+    [Timetable].[WenStart] AS [WenStart], 
+    [Timetable].[WenEnd] AS [WenEnd], 
+    [Timetable].[ThuStart] AS [ThuStart], 
+    [Timetable].[ThuEnd] AS [ThuEnd], 
+    [Timetable].[FriStart] AS [FriStart], 
+    [Timetable].[FriEnd] AS [FriEnd]
+    FROM [dbo].[Timetable] AS [Timetable]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Booking__Id_Clie__48CFD27E" Association="Self.FK__Booking__Id_Clie__48CFD27E">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__Id_Proc__47DBAE45" Association="Self.FK__Booking__Id_Proc__47DBAE45">
+      <End Role="Procedures" EntitySet="Procedures" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__Id_Psyc__49C3F6B7" Association="Self.FK__Booking__Id_Psyc__49C3F6B7">
+      <End Role="Psychologist" EntitySet="Psychologist" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__Id_Vouc__4AB81AF0" Association="Self.FK__Booking__Id_Vouc__4AB81AF0">
+      <End Role="Voucher" EntitySet="Voucher" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Psycholog__Degre__3E52440B" Association="Self.FK__Psycholog__Degre__3E52440B">
+      <End Role="Academic_Degree" EntitySet="Academic_Degree" />
+      <End Role="Psychologist" EntitySet="Psychologist" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Psycholog__Spezi__3D5E1FD2" Association="Self.FK__Psycholog__Spezi__3D5E1FD2">
+      <End Role="Specialization" EntitySet="Specialization" />
+      <End Role="Psychologist" EntitySet="Psychologist" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Review__Id_Clien__4D94879B" Association="Self.FK__Review__Id_Clien__4D94879B">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Timetable__Id_Ps__44FF419A" Association="Self.FK__Timetable__Id_Ps__44FF419A">
+      <End Role="Psychologist" EntitySet="Psychologist" />
+      <End Role="Timetable" EntitySet="Timetable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Voucher__Id_Psyc__412EB0B6" Association="Self.FK__Voucher__Id_Psyc__412EB0B6">
+      <End Role="Psychologist" EntitySet="Psychologist" />
+      <End Role="Voucher" EntitySet="Voucher" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

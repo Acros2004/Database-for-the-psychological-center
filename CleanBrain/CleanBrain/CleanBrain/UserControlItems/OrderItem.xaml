@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="CleanBrain.UserControlItems.OrderItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CleanBrain.UserControlItems"
+             mc:Ignorable="d" 
+             Height="184" Width="366">
+    <Border Background="#284751" CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="49"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Background="{DynamicResource HeaderProcColor}" CornerRadius="10 10 0 0">
+                <TextBlock FontSize="22" Style="{StaticResource TextMainBlock}" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10 10 0 0">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource nameProcConverter}">
+                            <Binding Path="Id_Procedure"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Border>
+            <Button DataContext="{StaticResource glContext}" Command="{Binding DelOrder}" Style="{StaticResource clousePage}" VerticalAlignment="Top" Height="25" Width="25" Opacity="0.7" HorizontalAlignment="Right" Margin="0 10 10 0"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Grid.Row="1" Style="{StaticResource profileText}" Foreground="White" FontSize="20">
+                <TextBlock.Text>
+                    <MultiBinding Converter="{StaticResource nameSurnameConverter}">
+                        <Binding Path="Id_Psychologist"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <Grid Grid.Row="2" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{DynamicResource OrdersDate}" VerticalAlignment="Center" Margin="5" Style="{StaticResource profileText}" Foreground="White" FontSize="20"/>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="5" Style="{StaticResource profileText}" Foreground="White" FontSize="20">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource dataConverter}">
+                            <Binding Path="Id_Voucher"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="3" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="73"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{DynamicResource OrdersTime}" VerticalAlignment="Center" Margin="5" Style="{StaticResource profileText}" Foreground="White" FontSize="20"/>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="5" Style="{StaticResource profileText}" Foreground="White" FontSize="20">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource timeConverter}">
+                            <Binding Path="Id_Voucher"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Grid>
+           
+        </Grid>
+    </Border>
+</UserControl>

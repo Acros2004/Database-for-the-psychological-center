@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0580053A-721E-4720-850C-291690EC8F17}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CleanBrain</RootNamespace>
+    <AssemblyName>CleanBrain</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Maps.MapControl.WPF.1.0.0.3\lib\net40-Client\Microsoft.Maps.MapControl.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Academic_Degree.cs">
+      <DependentUpon>Psychological_CenterDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Booking.cs">
+      <DependentUpon>Psychological_CenterDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client.cs">
+      <DependentUpon>Psychological_CenterDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Converter\BitmapImageConverter.cs" />
+    <Compile Include="Converter\DataConverter.cs" />
+    <Compile Include="Converter\FullNameConverter.cs" />
+    <Compile Include="Converter\NameProcedureConverter.cs" />
+    <Compile Include="Converter\NameSurnameConverter.cs" />
+    <Compile Include="Converter\PasswordConverter.cs" />
+    <Compile Include="Converter\TimeConverter.cs" />
+    <Compile Include="Converter\VisButtonConverter.cs" />
+    <Compile Include="HashPassword\EncoderL.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IRepositoryString.cs" />
+    <Compile Include="Manager\Manager.cs" />
+    <Compile Include="Manager\ManagerItem.cs" />
+    <Compile Include="MVVM\AppViewModel.cs" />
+    <Compile Include="MVVM\BookingModel.cs" />
+    <Compile Include="MVVM\GlobalContextModel.cs" />
+    <Compile Include="MVVM\GreetingModel.cs" />
+    <Compile Include="MVVM\ListProceduresModel.cs" />
+    <Compile Include="MVVM\ListPsychologistsModel.cs" />
+    <Compile Include="MVVM\ListReviewModel.cs" />
+    <Compile Include="MVVM\LogModel.cs" />
+    <Compile Include="MVVM\OrdersModel.cs" />
+    <Compile Include="MVVM\PreviewModel.cs" />
+    <Compile Include="MVVM\ProcedureModel.cs" />
+    <Compile Include="MVVM\ProfileModel.cs" />
+    <Compile Include="MVVM\PsyhologistModel.cs" />
+    <Compile Include="MVVM\RegModel.cs" />
+    <Compile Include="MVVM\ReviewModel.cs" />
+    <Compile Include="MVVM\SettingsModel.cs" />
+    <Compile Include="Pages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProcedurePage.xaml.cs">
+      <DependentUpon>ProcedurePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PsychologistPage.xaml.cs">
+      <DependentUpon>PsychologistPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GreetingPage.xaml.cs">
+      <DependentUpon>GreetingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProceduresPage.xaml.cs">
+      <DependentUpon>ProceduresPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PsychologistsPage.xaml.cs">
+      <DependentUpon>PsychologistsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReviewsPage.xaml.cs">
+      <DependentUpon>ReviewsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WarningWindow.xaml.cs">
+      <DependentUpon>WarningWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WindowApp.xaml.cs">
+      <DependentUpon>WindowApp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure.cs">
+      <DependentUpon>Psychological_CenterDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Psychological_CenterDataBase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Psychological_CenterDataBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Psychological_CenterDataBase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Psychological_CenterDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Psychological_CenterDataBase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Psychological_CenterDataBase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Psychologist.cs">
+      <DependentUpon>Psychological_CenterDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\BookingRepository.cs" />
+    <Compile Include="Repository\ClientRepository.cs" />
+    <Compile Include="Repository\DegreeRepository.cs" />
+    <Compile Include="Repository\ProcedureRepository.cs" />
+    <Compile Include="Repository\PsychologistRepository.cs" />
+    <Compile Include="Repository\ReviewRepository.cs" />
+    <Compile Include="Repository\SpecializationRepository.cs" />
+    <Compile Include="Repository\TimeTableRepository.cs" />
+    <Compile Include="Repository\VoucherRepository.cs" />
+    <Compile Include="Review.cs">
+      <DependentUpon>Psychological_CenterDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Specialization.cs">
+      <DependentUpon>Psychological_CenterDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Timetable.cs">
+      <DependentUpon>Psychological_CenterDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="UserControlItems\BindingPasswordBox.xaml.cs">
+      <DependentUpon>BindingPasswordBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlItems\OrderItem.xaml.cs">
+      <DependentUpon>OrderItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlItems\ProcItem.xaml.cs">
+      <DependentUpon>ProcItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlItems\PsyItem.xaml.cs">
+      <DependentUpon>PsyItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlItems\RevItem.xaml.cs">
+      <DependentUpon>RevItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users\AddBooking.xaml.cs">
+      <DependentUpon>AddBooking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Authorization.xaml.cs">
+      <DependentUpon>Authorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users\OrdersPage.xaml.cs">
+      <DependentUpon>OrdersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Registration.xaml.cs">
+      <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users\ReviewClient.xaml.cs">
+      <DependentUpon>ReviewClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Voucher.cs">
+      <DependentUpon>Psychological_CenterDataBase.tt</DependentUpon>
+    </Compile>
+    <Page Include="Languages\Eng.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Languages\Rus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProcedurePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PsychologistPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\GreetingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProceduresPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PsychologistsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReviewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WarningWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WindowApp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\Blue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlItems\BindingPasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlItems\OrderItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlItems\ProcItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlItems\PsyItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlItems\RevItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users\AddBooking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users\Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users\OrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users\Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users\Registration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users\ReviewClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="CleanBrainClassDiagram.cd" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="Psychological_CenterDataBase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Psychological_CenterDataBase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Psychological_CenterDataBase.edmx.diagram">
+      <DependentUpon>Psychological_CenterDataBase.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Photos\Settings.png" />
+    <Resource Include="Photos\ColorPicker.png" />
+    <Resource Include="Photos\Rus.png" />
+    <Resource Include="Photos\Eng.png" />
+    <Resource Include="Photos\Log.ico" />
+    <Content Include="Psychological_CenterDataBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Psychological_CenterDataBase.edmx</DependentUpon>
+      <LastGenOutput>Psychological_CenterDataBase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Psychological_CenterDataBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Psychological_CenterDataBase.edmx</DependentUpon>
+      <LastGenOutput>Psychological_CenterDataBase.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Photos\AboutImage.jpg" />
+    <Resource Include="Photos\arrow.png" />
+    <Resource Include="Photos\newInsta.png" />
+    <Resource Include="Photos\newVK.png" />
+    <Resource Include="Photos\first.jpg" />
+    <Resource Include="Photos\forRev.jpg" />
+    <Resource Include="Photos\exitPage.png" />
+    <Content Include="Photos\instaSvg.svg" />
+    <Resource Include="Photos\tel.png" />
+    <Resource Include="Photos\Log.png" />
+    <Resource Include="Photos\happyFamily2.jpg" />
+    <Resource Include="Photos\Insta.png" />
+    <Resource Include="Photos\VK.png" />
+    <Resource Include="Photos\phone2.png" />
+    <Resource Include="Photos\phone.png" />
+    <Resource Include="Photos\happyFamily.jpg" />
+    <Resource Include="Photos\responsible.jpg" />
+    <Resource Include="Photos\happyHuman.jpg" />
+    <Resource Include="Photos\backGreeting.jpg" />
+    <Resource Include="Photos\backProfile.jpg" />
+    <Resource Include="Photos\pin.png" />
+    <Resource Include="Photos\happy.png" />
+    <Resource Include="Photos\heart.png" />
+    <Resource Include="Photos\wellness.png" />
+    <Resource Include="Photos\bear.png" />
+    <Resource Include="Photos\backgr.jpg" />
+    <Resource Include="Photos\group.jpg" />
+    <Content Include="Photos\correct.png" />
+    <Resource Include="Photos\uncorrect.png" />
+    <Resource Include="Photos\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

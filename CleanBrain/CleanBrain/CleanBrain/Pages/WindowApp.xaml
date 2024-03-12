@@ -1,0 +1,120 @@
+﻿<Window x:Class="CleanBrain.Pages.WindowApp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CleanBrain.Pages"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        x:Name="Preview"
+        Icon="/Photos/Log.ico"
+        xmlns:vm="clr-namespace:CleanBrain.MVVM"
+        
+        mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=vm:PreviewModel}"
+        
+        WindowStartupLocation="CenterScreen"
+        Title="Clean Brain" Height="924" MinHeight="840" Width="1470" MinWidth="1470">
+
+
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="427"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid Background="{DynamicResource NavColor}" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="79"/>
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="110"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100*"/>
+            </Grid.RowDefinitions>
+            <Image Margin="102,-12,86.2,0.2"  Stretch="Fill" />
+            <Button Margin="28,9.8,274.2,25.2" Grid.Row="1"  Style="{StaticResource ImageButton}" Command="{Binding OpenProfile}">
+                <Button.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding ImageClient,UpdateSourceTrigger=PropertyChanged}" />
+                </Button.Background>
+            </Button>
+            <TextBlock x:Name="Greeting" Style="{StaticResource TextProfUnder}" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{DynamicResource AppGreeting}" VerticalAlignment="Top" Margin="166,103,0,0" Grid.Row="1" Height="32" Width="190"/>
+            <TextBlock x:Name="AccountName" Style="{StaticResource TextProfMain}" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding PreviewName,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="166,0,0,0" Grid.Row="1" Height="36" Width="224"/>
+            <Button  Style="{StaticResource OrdersButton}" Command="{Binding OpenOrdersPage}" Width="220" Height="40" Grid.Row="2" Margin="20 0 0 0"   VerticalAlignment="Center" HorizontalAlignment="Left" >
+                <StackPanel  Width="308">
+                    <Label Content="{DynamicResource AppOrders}" Width="250" Height="36" FontSize="25" RenderTransformOrigin="0.5,0.501"/>
+                </StackPanel>
+            </Button>
+
+            <Button   Style="{StaticResource MenuButton}"  Margin="0,20,0,5" Width="342" Height="80" Grid.Row="3" HorizontalAlignment="Center" Command="{Binding GetPsychologists}">
+                <StackPanel  Width="308"  >
+                    <Label  Content="{DynamicResource AppPsy}" Width="215" Height="52" FontSize="36" RenderTransformOrigin="0.5,0.501"/>
+                </StackPanel>
+            </Button>
+            <Image Grid.Column="0" Grid.Row="3" Source="../Photos/wellness.png" Height="80" Width="77" IsEnabled="True" Margin="28,22,322,8">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding GetPsychologists}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
+            <Button Style="{StaticResource MenuButton}"  Margin="14,11.6,8.2,8.4" Width="342" Height="80" Grid.Row="4"  Command="{Binding GetProcedures}">
+                <StackPanel  Width="308">
+                    <Label Content="{DynamicResource AppProc}" Width="215" Height="52" FontSize="36" RenderTransformOrigin="0.5,0.501"/>
+                </StackPanel>
+            </Button>
+            <Image Grid.Column="0" Grid.Row="4" Source="../Photos/heart.png" Height="80" Width="77" IsEnabled="True" Margin="28,12,322,8">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding GetProcedures}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
+            <Button Margin="12,13.6,10.2,6.4" Style="{StaticResource MenuButton}" Width="342" Height="80" Grid.Row="5"  Command="{Binding GetReviews}">
+                <StackPanel  Width="308">
+                    <Label Content="{DynamicResource AppReview}" Width="215" Height="52" FontSize="36" RenderTransformOrigin="0.5,0.501"/>
+                </StackPanel>
+            </Button>
+            <Image Grid.Column="0" Grid.Row="5" Source="../Photos/happy.png" Height="80" Width="77" IsEnabled="True" Margin="28,12,322,8">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding GetReviews}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
+            <Button  Style="{StaticResource MenuButton}" Name="about" Margin="10,13.6,12.2,6.4" Width="342" Height="81" Grid.Row="6" Command="{Binding GetAbout}">
+                <StackPanel  Width="308">
+                    <Label Content="{DynamicResource AppAbout}" Width="215" Height="52" FontSize="36" RenderTransformOrigin="0.5,0.501"/>
+                </StackPanel>
+            </Button>
+            <Image Grid.Column="0" Grid.Row="6" Source="../Photos/pin.png" Height="86" Width="81" IsEnabled="True" Margin="25,14,322,7">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding GetAbout}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
+            <Button  Style="{StaticResource MenuButton}" Command="{Binding OpenSettings}" Name="exit" Margin="25 0 110 10" Width="220" Height="50" Grid.Row="7" HorizontalAlignment="Left"  VerticalAlignment="Bottom">
+                <StackPanel  Width="308">
+                    <Label Content="{DynamicResource AppSettings}" Width="214" Height="36" FontSize="25" RenderTransformOrigin="0.5,0.501"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Frame Name="PreviewFraim" HorizontalContentAlignment="Stretch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="0" NavigationUIVisibility="Hidden"></Frame>
+        <Border Name="BackgroundOverlay" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Background="#99000000" Visibility="{Binding IsFrameVisible, Converter={StaticResource BooleanToVisibilityConverter},UpdateSourceTrigger=PropertyChanged  }" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding CloseBorderClick}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Border>
+        <Frame  Visibility="{Binding IsFrameVisible, Converter={StaticResource BooleanToVisibilityConverter},UpdateSourceTrigger=PropertyChanged }" NavigationUIVisibility ="Hidden"  Name="ProfileFrame" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="ContentRendered">
+                    <i:InvokeCommandAction Command="{Binding CloseBorder}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Frame>
+
+    </Grid>
+</Window>

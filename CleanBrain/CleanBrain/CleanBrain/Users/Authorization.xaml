@@ -1,0 +1,82 @@
+﻿<Page x:Class="CleanBrain.Users.Authorization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:exit="clr-namespace:CleanBrain.MVVM"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:local="clr-namespace:CleanBrain.Users"
+      mc:Ignorable="d" 
+       d:DesignHeight="823" d:DesignWidth="479"
+      Title="Authorization">
+    <Page.DataContext>
+        <exit:LogModel></exit:LogModel>
+    </Page.DataContext>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="429"/>
+            <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="116.8"/>
+            <RowDefinition Height="102.4"/>
+            <RowDefinition Height="139.4"/>
+
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="32*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource MainTextReg}" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{DynamicResource AuthLogo}" VerticalAlignment="Top" Width="232" Height="41" Grid.Column="1" Margin="0,60,0,0"/>
+        <TextBox x:Name="Logine" Text="{Binding LogClient.Login_Client,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource For_TextBox}" HorizontalAlignment="Left" Height="80" Margin="15,0,0,0" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Center" Width="405" Grid.Column="1" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="GotFocus">
+                    <i:InvokeCommandAction Command="{Binding LoginGot}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="LostFocus">
+                    <i:InvokeCommandAction Command="{Binding LoginLost}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="TextChanged">
+                    <i:InvokeCommandAction Command="{Binding LoginChange}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+        <Border Padding="70,22,12,12"  CornerRadius="40" BorderBrush="#EDECEC" BorderThickness="1"  Background="#EDECEC"  HorizontalAlignment="Left" Height="80" Margin="14.8,13.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="405" Grid.Column="1">
+            <PasswordBox  x:Name="Password3" LostFocus="PasswordBox_LastFocus" GotFocus="PasswordBox_GotFocus" PasswordChanged="PasswordBox_PasswordChanged" FontSize="30" BorderThickness="0" Background="#EDECEC"  FontFamily="Inter" FontWeight="Thin"/>
+        </Border>
+        <TextBox GotFocus="PasswordBox_GotFocus" BorderThickness="0" x:Name="forPassword" FontSize="30" Foreground="#565656" Background="#EDECEC"  FontFamily="Inter" FontWeight="Thin"  Grid.Column="1" Grid.Row="2" Margin="86,37,23,22"/>
+        <!--<TextBox x:Name="Password" Text="{Binding LogClient.Password_Client,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource For_TextBox}" HorizontalAlignment="Left" Height="80" Margin="14.8,13.8,0,0" Grid.Row="2" TextWrapping="NoWrap" VerticalAlignment="Top" Width="405" Grid.Column="1">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="GotFocus">
+                    <i:InvokeCommandAction Command="{Binding PasswordGot}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="LostFocus">
+                    <i:InvokeCommandAction Command="{Binding PasswordLost}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="TextChanged">
+                    <i:InvokeCommandAction Command="{Binding PasswordChange}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>-->
+        <Button  Style="{StaticResource Button_Reg}" Content="{DynamicResource RegButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="405" Margin="9.8,49.4,0,0" Grid.Row="3" Height="80" Grid.Column="1" Command="{Binding LogButton}"/>
+        <TextBlock Style="{StaticResource Guest}" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{DynamicResource RegGuest}" VerticalAlignment="Top" Margin="109,51,0,0" Grid.Row="5" Width="206" Height="30" Grid.Column="1" Grid.RowSpan="2" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding GetGuest}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBlock>
+        <TextBlock Style="{StaticResource Сhoice}" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{DynamicResource RegOr}" VerticalAlignment="Center" Grid.Row="5" Width="69" Height="33" Grid.Column="1" Margin="178,0,0,0"/>
+        <TextBlock Style="{StaticResource Login}" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{DynamicResource AuthReg}" VerticalAlignment="Top" Margin="129,9,0,0" Grid.Row="4" Width="166" Height="33" Grid.Column="1" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding GetRegistrationPage}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBlock>
+        <TextBlock Name="Warring" Foreground="#FFABAB"  Style="{StaticResource Textgrey}" HorizontalAlignment="Left" TextWrapping="NoWrap"  Text="" VerticalAlignment="Top" Grid.Column="1" Margin="39.8,20.8,0,0" Grid.Row="3" FontSize="20" RenderTransformOrigin="-1.732,0.483" Width="355"/>
+        <Image Source="{Binding CorrectPassword,UpdateSourceTrigger=PropertyChanged}" Name ="CorrectPassword"   Margin="28,29,351,26" Grid.Row="2"  Grid.Column="1"/>
+        <Image Source="{Binding CorrectLogin,UpdateSourceTrigger=PropertyChanged}" Name="CorrectLogin"  Margin="28,29,351,36" Grid.Row="1"  Grid.Column="1"/>
+    </Grid>
+</Page>

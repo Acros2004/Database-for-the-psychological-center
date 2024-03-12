@@ -1,0 +1,36 @@
+﻿<Page x:Class="CleanBrain.Users.ReviewClient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CleanBrain.Users"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      mc:Ignorable="d" 
+      Height="470" Width="447"
+      Title="ReviewClient">
+    <Border Background="#284751" CornerRadius="50">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border HorizontalAlignment="Center" CornerRadius="100" Width="140" Height="140" VerticalAlignment="Bottom">
+                <Border.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}" />
+                </Border.Background>
+            </Border>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Style="{StaticResource profileText}" Foreground="White" FontSize="25" Margin="0 10 0 0" Text="{DynamicResource ReviewClient}"/>
+            <TextBox Grid.Row="2" Style="{StaticResource For_TextBox_Review}" Foreground="{Binding CorrectText,UpdateSourceTrigger=PropertyChanged}" Text="{Binding TextReview,UpdateSourceTrigger=PropertyChanged}" Background="#CECECE" HorizontalAlignment="Center" Width="370" Margin="0 10" FontSize="20" TextWrapping="Wrap">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding ChangeText}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <Button Grid.Row="3" Width="150" Height="50" Style="{StaticResource ButtonDel_Prof}" Background="#a491e1" Content="{DynamicResource ReviewClientButton}" Command="{Binding SaveReview}"/>
+        </Grid>
+    </Border>
+    
+</Page>

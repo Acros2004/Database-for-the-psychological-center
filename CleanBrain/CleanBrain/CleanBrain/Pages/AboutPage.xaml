@@ -1,0 +1,103 @@
+﻿<Page x:Class="CleanBrain.Pages.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CleanBrain.Pages"
+      mc:Ignorable="d" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+      d:DesignHeight="884" d:Width="1013" 
+      Title="AboutPage">
+
+    <Border Background="{DynamicResource MainColor}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="30"/>
+                <RowDefinition  Height="300*"/>
+                <RowDefinition  Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.ColumnSpan="3" MaxWidth="1350"  Background="#7B6868" Opacity="0.7" Margin="20 0 20 0" CornerRadius="20 20 0 0"/>
+                <Border  Background="{DynamicResource AboutItemColor}" CornerRadius="15" MaxWidth="450" Grid.ColumnSpan="2" Margin="38,18,299,18">
+                    <TextBlock TextWrapping="Wrap" FontSize="20" Margin="10" HorizontalAlignment="Center" TextAlignment="Justify" Foreground="#534E4E" Text="{DynamicResource AboutFirst}"/>
+                </Border>
+                <Border Grid.Column="1" MaxWidth="450"  Background="{DynamicResource AboutItemColor}" CornerRadius="15" Opacity="1" Margin="304,18,33,18" Grid.ColumnSpan="2" >
+                    <TextBlock  TextWrapping="Wrap" FontSize="20" Margin="11,10,0,10" HorizontalAlignment="Left" TextAlignment="Justify" Foreground="#534E4E" Text="{DynamicResource AboutSecond}"/>
+                </Border>
+                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Right" FontSize="55" VerticalAlignment="Center" FontFamily="Book Antiqua" Text="CLEAN" Margin="0 0 10 0" FontWeight="Bold"/>
+                    <Border Margin="332,-46,331,-46" Height="350" Width="350" Grid.ColumnSpan="3" Background="{DynamicResource MainColor}" CornerRadius="200">
+                        <Image Source="../Photos/Log.png" Height="290"/>
+                    </Border>
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Left" FontSize="55" VerticalAlignment="Center" FontFamily="Book Antiqua" Text="BRAIN" Margin="0 0 10 0" FontWeight="Bold"/>
+                </Grid>
+                <Grid Grid.Row="2" Grid.ColumnSpan="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="{DynamicResource BackImageAbout}" MaxWidth="550" CornerRadius="0 0 20 20" Margin="20,0,318,0" Opacity="1" Grid.ColumnSpan="2" >
+                        <Border Background="#F0EEEA" MaxWidth="450" Margin="20,20,20,20" CornerRadius="15" Opacity="1">
+                            <m:Map CredentialsProvider="AttsGkqIHCOIEA11KtQZDphl5bi8lppin64jeg-ZOOhiS4cdHA_EXJwHSbyZi4Xo" Margin="10" HorizontalAlignment="Stretch" Mode="Road" ZoomLevel="16" Center="53.855152, 27.560394"  >
+
+                                <Canvas
+                                m:MapLayer.Position="53.855152, 27.560394"
+                                m:MapLayer.PositionOrigin="BottomCenter" Width="30" Height="30">
+                                    <Image Source="../Photos/arrow.png" Height="30" RenderTransformOrigin="0.5,0.5" Width="30"/>
+                                </Canvas>
+                            </m:Map>
+                        </Border>
+                    </Border>
+
+                    <Border Grid.Column="1" MaxWidth="550" Background="{DynamicResource BackImageAbout}" CornerRadius="0 0 20 20" Margin="317,0,20,0" Opacity="1" Grid.ColumnSpan="2" >
+                        <Border Grid.Column="2" MaxWidth="450" Margin="20" CornerRadius="15" Opacity="1">
+                            <Border.Background>
+                                <ImageBrush Opacity="1" Stretch="UniformToFill" ImageSource="../Photos/AboutImage.jpg"/>
+                            </Border.Background>
+                        </Border>
+                    </Border>
+                    
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Row ="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="330"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border MouseDown="OpenInst" Grid.Column="1" CornerRadius="100" VerticalAlignment="Center" HorizontalAlignment="Left" Background="{DynamicResource AboutItemSite}" Width="88" Height="88">
+                    <Image MouseDown="OpenInst" Source="../Photos/newInsta.png" Height="60"/>
+                </Border>
+                <Border MouseDown="OpenTel" Grid.Column="1" CornerRadius="100" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{DynamicResource AboutItemSite}" Width="88" Height="88">
+                    <Image MouseDown="OpenTel" Source="../Photos/tel.png" Height="60"/>
+                </Border>
+                <Border MouseDown="OpenVK" Grid.Column="1" CornerRadius="100" VerticalAlignment="Center" HorizontalAlignment="Right" Background="{DynamicResource AboutItemSite}" Width="88" Height="88">
+                    <Image MouseDown="OpenVK" HorizontalAlignment="Center" Source="../Photos/newVK.png" Height="60" Margin="0,9,0,9"/>
+                </Border>
+            </Grid>
+        </Grid>
+
+
+    </Border>
+</Page>

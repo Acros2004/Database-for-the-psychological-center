@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="MainColor" Color="#FFF1B2" />
+    <SolidColorBrush x:Key="AboutItemColor" Color="#FFE7A9" />
+    <SolidColorBrush x:Key="NavColor" Color="#D5FFFF" />
+    <SolidColorBrush x:Key="BackItemGreeting" Color="#B6A475" />
+    <SolidColorBrush x:Key="BackTextGreeting" Color="#E3CAAC" />
+    <SolidColorBrush x:Key="FooterGreeting" Color="#E2BD5B" />
+    <SolidColorBrush x:Key="SearchColor" Color="#DFA880" />
+    <SolidColorBrush x:Key="AboutItemSite" Color="#F1C527" />
+    <SolidColorBrush x:Key="BackImageAbout" Color="#A3917E" />
+    <SolidColorBrush x:Key="HeaderProcColor" Color="#E9CB9E" />
+    <SolidColorBrush x:Key="BackTextItemList" Color="#F4D09A" />
+    <SolidColorBrush x:Key="BookingBackText" Color="#FEB979" />
+</ResourceDictionary>

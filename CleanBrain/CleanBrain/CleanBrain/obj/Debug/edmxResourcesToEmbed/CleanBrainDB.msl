@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Psychological_CenterModelContainer" CdmEntityContainer="Psychological_CenterEntities">
+    <EntitySetMapping Name="Academic_Degree">
+      <EntityTypeMapping TypeName="Psychological_CenterModel.Academic_Degree">
+        <MappingFragment StoreEntitySet="Academic_Degree">
+          <ScalarProperty Name="Academic_Name" ColumnName="Academic_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="Psychological_CenterModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="ID_Booking" ColumnName="ID_Booking" />
+          <ScalarProperty Name="Date_Booking" ColumnName="Date_Booking" />
+          <ScalarProperty Name="Id_Procedure" ColumnName="Id_Procedure" />
+          <ScalarProperty Name="Id_Client" ColumnName="Id_Client" />
+          <ScalarProperty Name="Id_Psychologist" ColumnName="Id_Psychologist" />
+          <ScalarProperty Name="Id_Voucher" ColumnName="Id_Voucher" />
+          <ScalarProperty Name="Time_Booking" ColumnName="Time_Booking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="Psychological_CenterModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="Id_client" ColumnName="Id_client" />
+          <ScalarProperty Name="Name_Client" ColumnName="Name_Client" />
+          <ScalarProperty Name="Surname_Client" ColumnName="Surname_Client" />
+          <ScalarProperty Name="Login_Client" ColumnName="Login_Client" />
+          <ScalarProperty Name="Password_Client" ColumnName="Password_Client" />
+          <ScalarProperty Name="Photo_Client" ColumnName="Photo_Client" />
+          <ScalarProperty Name="Mail_Client" ColumnName="Mail_Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Procedures">
+      <EntityTypeMapping TypeName="Psychological_CenterModel.Procedure">
+        <MappingFragment StoreEntitySet="Procedures">
+          <ScalarProperty Name="Id_Procedure" ColumnName="Id_Procedure" />
+          <ScalarProperty Name="Name_Procedure" ColumnName="Name_Procedure" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Depiction" ColumnName="Depiction" />
+          <ScalarProperty Name="Spezialization_Procedure" ColumnName="Spezialization_Procedure" />
+          <ScalarProperty Name="Photo_Procedure" ColumnName="Photo_Procedure" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Psychologists">
+      <EntityTypeMapping TypeName="Psychological_CenterModel.Psychologist">
+        <MappingFragment StoreEntitySet="Psychologist">
+          <ScalarProperty Name="Id_Psychologist" ColumnName="Id_Psychologist" />
+          <ScalarProperty Name="Name_Psychologist" ColumnName="Name_Psychologist" />
+          <ScalarProperty Name="Surname_Psychologist" ColumnName="Surname_Psychologist" />
+          <ScalarProperty Name="Patronymic_Psychologist" ColumnName="Patronymic_Psychologist" />
+          <ScalarProperty Name="Experience" ColumnName="Experience" />
+          <ScalarProperty Name="Photo_Psychologist" ColumnName="Photo_Psychologist" />
+          <ScalarProperty Name="Spezialization_Psychologist" ColumnName="Spezialization_Psychologist" />
+          <ScalarProperty Name="Degree" ColumnName="Degree" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="Psychological_CenterModel.Review">
+        <MappingFragment StoreEntitySet="Review">
+          <ScalarProperty Name="Id_Review" ColumnName="Id_Review" />
+          <ScalarProperty Name="Id_Client" ColumnName="Id_Client" />
+          <ScalarProperty Name="Review1" ColumnName="Review" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Specializations">
+      <EntityTypeMapping TypeName="Psychological_CenterModel.Specialization">
+        <MappingFragment StoreEntitySet="Specialization">
+          <ScalarProperty Name="Spezialization_Name" ColumnName="Spezialization_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vouchers">
+      <EntityTypeMapping TypeName="Psychological_CenterModel.Voucher">
+        <MappingFragment StoreEntitySet="Voucher">
+          <ScalarProperty Name="Id_Voucher" ColumnName="Id_Voucher" />
+          <ScalarProperty Name="Date_Voucher" ColumnName="Date_Voucher" />
+          <ScalarProperty Name="Time_Voucher_Start" ColumnName="Time_Voucher_Start" />
+          <ScalarProperty Name="Time_Voucher_End" ColumnName="Time_Voucher_End" />
+          <ScalarProperty Name="Id_Psychologist" ColumnName="Id_Psychologist" />
+          <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Timetables">
+      <EntityTypeMapping TypeName="Psychological_CenterModel.Timetable">
+        <MappingFragment StoreEntitySet="Timetable">
+          <ScalarProperty Name="Id_Psychologist" ColumnName="Id_Psychologist" />
+          <ScalarProperty Name="MondStart" ColumnName="MondStart" />
+          <ScalarProperty Name="MondEnd" ColumnName="MondEnd" />
+          <ScalarProperty Name="TueStart" ColumnName="TueStart" />
+          <ScalarProperty Name="TueEnd" ColumnName="TueEnd" />
+          <ScalarProperty Name="WenStart" ColumnName="WenStart" />
+          <ScalarProperty Name="WenEnd" ColumnName="WenEnd" />
+          <ScalarProperty Name="ThuStart" ColumnName="ThuStart" />
+          <ScalarProperty Name="ThuEnd" ColumnName="ThuEnd" />
+          <ScalarProperty Name="FriStart" ColumnName="FriStart" />
+          <ScalarProperty Name="FriEnd" ColumnName="FriEnd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
